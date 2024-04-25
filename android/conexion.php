@@ -4,7 +4,7 @@
     // TENGO DE CONTRASEÑA ROOT  POR SI TIENES QUE PROBAR
     $conexion = "mysql:dbname=proyectodaw;host:127.0.0.1";
     $usuario = "root";
-    $password = "1234";
+    $password = "";
 
 
     try {
