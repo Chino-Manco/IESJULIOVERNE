@@ -94,6 +94,22 @@ public class PartsActivity extends AppCompatActivity {
         TextView navUsername = headerView.findViewById(R.id.nav_username);
         navUsername.setText("Nombre de usuario");
 
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
+        PagerAdapter adapter = new PagerAdapter() {
+            @Override
+            public int getCount() {
+                return 0;
+            }
+
+            @Override
+            public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
+                return false;
+            }
+        };
+        viewPager.setAdapter(adapter);
+
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
         //Manejo de los tabs
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
