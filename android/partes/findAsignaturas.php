@@ -2,18 +2,21 @@
 include '../conexion.php';
 
 try {
-    // Prepara la consulta
-    $sql = "SELECT codigo, nombre FROM Departamentos";
+
+    $curso = $_GET['curso'];
+
+    // Preparo la consulta 
+    $sql = "SELECT * FROM Asignaturas where curso = ?";
     $stmt = $db->prepare($sql);
 
-    // Ejecuta la consulta 
-    $stmt->execute();
+    // Ejecuto la consulta 
+    $stmt->execute(array($curso));
 
-    // Buscar todos los departamentos
-    $departamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // Buscar todos los cursos
+    $Asignaturas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // Preparar el response
-    $response = $departamentos;
+    $response = $Asignaturas;
 
     // encabezado en json
     header('Content-Type: application/json');

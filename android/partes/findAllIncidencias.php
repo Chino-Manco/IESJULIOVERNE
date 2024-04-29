@@ -3,17 +3,17 @@ include '../conexion.php';
 
 try {
     // Prepara la consulta
-    $sql = "SELECT codigo, nombre FROM Departamentos";
+    $sql = "SELECT * FROM Incidencias";
     $stmt = $db->prepare($sql);
 
     // Ejecuta la consulta 
     $stmt->execute();
 
     // Buscar todos los departamentos
-    $departamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $incidencias = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // Preparar el response
-    $response = $departamentos;
+    $response = $incidencias;
 
     // encabezado en json
     header('Content-Type: application/json');

@@ -1,0 +1,253 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <!--Datos de parte-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="30sp"
+                        android:layout_margin="16dp"
+                        android:text="Datos del parte"/>
+
+                        <!--Seleccion de curso-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="@drawable/border_background"
+                            android:layout_margin="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Selecciona el Curso:"
+                                android:textSize="16sp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="16dp"/>
+
+                            <Spinner
+                                android:id="@+id/spinnerCurso"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginTop="8dp"/>
+
+                        </LinearLayout>
+
+                        <!--Seleccion de alumno del curso seleccionado-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="@drawable/border_background"
+                            android:layout_margin="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Selecciona el Alumno:"
+                                android:textSize="16sp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="16dp"/>
+
+                            <Spinner
+                                android:id="@+id/spinnerAlumno"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginTop="8dp"/>
+                        </LinearLayout>
+
+                        <!--Seleccion de la asignatura-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="@drawable/border_background"
+                            android:layout_margin="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Selecciona la asignatura:"
+                                android:textSize="16sp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="16dp"/>
+
+                            <Spinner
+                                android:id="@+id/spinnerAsignatura"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginTop="8dp"/>
+                        </LinearLayout>
+
+                        <!--Seleccion de tipo de incidencia-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="@drawable/border_background"
+                            android:layout_margin="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Selecciona el tipo de Incidencia:"
+                                android:textSize="16sp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="16dp"/>
+
+                            <Spinner
+                                android:id="@+id/spinnerIncidencia"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginTop="8dp"/>
+                        </LinearLayout>
+                        <!--Descripcion de la incidencia seleccionada-->
+                        <TextView
+                            android:id="@+id/incidenciaDescripcion"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"/>
+
+
+                        <!--Descripcion a añadir por el profesor-->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Descripción:"
+                            android:textSize="16sp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginBottom="-10dp"
+                            android:layout_marginTop="16dp"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="@drawable/border_background"
+                            android:layout_margin="16dp">
+
+                            <EditText
+                                android:id="@+id/partDescripcion"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Introduce tu descripción aquí"
+                                android:inputType="textMultiLine"
+                                android:minLines="5"
+                                android:gravity="start|top"
+                                android:scrollbars="vertical"/>
+                        </LinearLayout>
+                </LinearLayout>
+
+
+                <!--Comunicacion con padres-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="30sp"
+                        android:layout_margin="16dp"
+                        android:text="Comunicación con padres"/>
+
+                    <RadioGroup
+                        android:id="@+id/radioGroupCommunication"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/entrevista"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Entrevista con los padres"/>
+
+                        <RadioButton
+                            android:id="@+id/llamada"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Llamada telefónica"/>
+
+                        <RadioButton
+                            android:id="@+id/mensaje"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Mensaje"/>
+
+                        <RadioButton
+                            android:id="@+id/notificacion"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Notificación escrita"/>
+
+                    </RadioGroup>
+
+                    <!-- Añade un CalendarView -->
+                    <CalendarView
+                        android:id="@+id/calendarView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:background="@drawable/border_background" />
+
+                    <TextView
+                        android:id="@+id/errorAddPart"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="50dp"
+                        android:gravity="center">
+
+
+                        <Button
+                            android:text="Volver"
+                            android:id="@+id/buttonBack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="50dp"/>
+
+                        <Button
+                            android:text="Guardar"
+                            android:id="@+id/buttonSave"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </FrameLayout>
+
+</ScrollView>
