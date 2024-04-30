@@ -3,6 +3,8 @@ package com.ies.bargas.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
 import android.os.Bundle;
 import android.service.controls.actions.FloatAction;
 import android.view.Menu;
@@ -26,6 +28,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.ies.bargas.R;
+import com.ies.bargas.adapters.PagerAdapterParts;
 import com.ies.bargas.util.Util;
 
 public class PartsActivity extends AppCompatActivity {
@@ -35,7 +38,6 @@ public class PartsActivity extends AppCompatActivity {
     private SharedPreferences prefs;
     private LinearLayout linearLayout;
     private TabLayout tabLayout;
-    private ViewPager viewPager;
     private TextView titulo;
     private FloatingActionButton floatAction;
 
@@ -52,14 +54,13 @@ public class PartsActivity extends AppCompatActivity {
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-        /*
-        tabLayout = findViewById(R.id.tabPartsLayout);
-        viewPager = findViewById(R.id.viewPager);
-        titulo= findViewById(R.id.titulo);
-        */
+
+        setTabLayout();
+
         floatAction=findViewById(R.id.addParts);
 
         //shared preferences
+
         prefs = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
         // configurar la vista de la navegacion
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -98,23 +99,12 @@ public class PartsActivity extends AppCompatActivity {
         // establecer el nombre del usuario en el header
         View headerView = navigationView.getHeaderView(0);
         TextView navUsername = headerView.findViewById(R.id.nav_username);
-        navUsername.setText("Nombre de usuario");
+        setCredentialsIfExist(navUsername);
 
 
-        /*
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
-        PagerAdapter adapter = new PagerAdapter() {
-            @Override
-            public int getCount() {
-                return 0;
-            }
-
-            @Override
-            public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-                return false;
-            }
-        };
+        PagerAdapterParts adapter = new PagerAdapterParts(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -123,10 +113,9 @@ public class PartsActivity extends AppCompatActivity {
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                Toast.makeText(PartsActivity.this, "Seleccionado -> "+tab.getText(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(PartsActivity.this, "Seleccionado -> "+tab.getPosition(), Toast.LENGTH_SHORT).show();
                 int position = tab.getPosition();
                 viewPager.setCurrentItem(position);
-                titulo.setText(tab.getText());
             }
 
             @Override
@@ -139,7 +128,7 @@ public class PartsActivity extends AppCompatActivity {
 
             }
         });
-        */
+
 
         floatAction.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,5 +139,24 @@ public class PartsActivity extends AppCompatActivity {
         });
 
     }
-}
 
+    private void setTabLayout() {
+        tabLayout = findViewById(R.id.tabPartsLayout);
+        tabLayout.addTab(tabLayout.newTab().setText("Partes"));
+        tabLayout.addTab(tabLayout.newTab().setText("Expulsiones"));
+        tabLayout.addTab(tabLayout.newTab().setText("Alumnos"));
+
+        //tabLayout.getTabAt(0).setIcon(R.drawable.ic_anadir_persona);
+        //tabLayout.getTabAt(1).setIcon(R.drawable.ic_bandera);
+
+    }
+
+    private void setCredentialsIfExist(TextView navUsername) {
+        String nombre = Util.getUserNombrePrefs(prefs);
+        String apellidos = Util.getUserApellidosPrefs(prefs);
+        if (!nombre.isEmpty() && !apellidos.isEmpty()){
+            navUsername.setText(nombre+ " "+apellidos);
+
+        }
+    }
+}

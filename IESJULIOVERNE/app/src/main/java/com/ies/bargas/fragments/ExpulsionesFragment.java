@@ -1,4 +1,4 @@
-package com.ies.bargas.Fragment;
+package com.ies.bargas.fragments;
 
 import android.os.Bundle;
 
@@ -12,10 +12,9 @@ import com.ies.bargas.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Partes#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Partes extends Fragment {
+public class ExpulsionesFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +25,7 @@ public class Partes extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Partes() {
+    public ExpulsionesFragment() {
         // Required empty public constructor
     }
 
@@ -36,11 +35,11 @@ public class Partes extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Partes.
+     * @return A new instance of fragment Alumnos.
      */
     // TODO: Rename and change types and number of parameters
-    public static Partes newInstance(String param1, String param2) {
-        Partes fragment = new Partes();
+    public static ExpulsionesFragment newInstance(String param1, String param2) {
+        ExpulsionesFragment fragment = new ExpulsionesFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +60,6 @@ public class Partes extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_partes, container, false);
+        return inflater.inflate(R.layout.fragment_expulsiones, container, false);
     }
 }

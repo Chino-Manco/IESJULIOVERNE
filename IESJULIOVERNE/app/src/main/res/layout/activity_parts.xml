@@ -4,98 +4,77 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <!-- añade una toolbar-->
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        android:layout_height="wrap_content">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:layout_gravity="top"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <!-- Fragments -->
-        <!--
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabPartsLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:layout_gravity="bottom"
-            app:tabIndicatorColor="@color/white"
-            app:tabSelectedTextColor="@color/black">
+            <!-- añade una toolbar-->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:layout_gravity="top"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabPart1"
+            <!-- Fragments -->
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabPartsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:layout_gravity="bottom"
+                app:tabTextColor="@color/white"
+                app:tabSelectedTextColor="@color/black">
+
+
+            </com.google.android.material.tabs.TabLayout>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Partes" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tabPartsLayout"
+                app:layout_constraintVertical_bias="1.0">
+        </androidx.viewpager.widget.ViewPager>
 
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabPart2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Expulsiones" />
-
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabPart3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Alumnos" />
-
-        </com.google.android.material.tabs.TabLayout>
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tabPartsLayout"
-            app:layout_constraintVertical_bias="1.0">
-    </androidx.viewpager.widget.ViewPager>
-        <TextView
-            android:id="@+id/titulo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-            -->
-    </LinearLayout>
+        </LinearLayout>
 
         <!--Boton flotante-->
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/addParts"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="bottom|end"
-                android:layout_margin="16dp"
-                android:clickable="true"
-                app:backgroundTint="?attr/colorPrimary"
-                app:borderWidth="0dp"
-                app:srcCompat="@drawable/agregar" />
-
-
-</FrameLayout>
-
-
-        <!-- añade un navigationView para configurar el menu del nav_drawer_menu.xml-->
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/nav_view"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addParts"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:fitsSystemWindows="true"
-            app:headerLayout="@layout/header_nav_drawer"
-            app:menu="@menu/nav_options" />
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:clickable="true"
+            app:backgroundTint="?attr/colorPrimary"
+            app:borderWidth="0dp"
+            />
+
+
+    </FrameLayout>
+
+
+    <!-- añade un navigationView para configurar el menu del nav_drawer_menu.xml-->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/header_nav_drawer"
+        app:menu="@menu/nav_options" />
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

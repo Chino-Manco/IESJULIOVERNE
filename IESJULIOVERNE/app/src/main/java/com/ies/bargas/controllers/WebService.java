@@ -9,9 +9,12 @@ public class WebService {
     public static final String Cursos = "usuarios/findAllCursos.php";
     public static final String Recover = "usuarios/recover.php";
     public static final String Modify = "usuarios/modify.php";
-    public static final String Alumnos = "partes/findAlumnos.php";
-    public static final String Incidencias = "partes/findAllIncidencias.php";
-    public static final String Asignaturas= "partes/findAsignaturas.php";
+    public static final String Asignaturas="partes/findAsignaturas.php";
+    public static final String Incidencias="partes/findAllIncidencias.php";
+    public static final String Alumnos="partes/findAlumnos.php";
+    public static final String InsertParts="partes/insertParts.php";
+
+
 
 
 }

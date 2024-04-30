@@ -143,7 +143,6 @@ public class LoginActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                editTextEmail.setText(error.getMessage());
                 Toast.makeText(LoginActivity.this, "ERROR: " + error.getMessage(), Toast.LENGTH_LONG).show();
 
             }

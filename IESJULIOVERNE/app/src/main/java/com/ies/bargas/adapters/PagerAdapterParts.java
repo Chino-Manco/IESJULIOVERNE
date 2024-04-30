@@ -4,13 +4,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.ies.bargas.Fragment.Alumnos;
-import com.ies.bargas.Fragment.Expulsiones;
-import com.ies.bargas.Fragment.Partes;
+import com.ies.bargas.fragments.AlumnosFragment;
+import com.ies.bargas.fragments.ExpulsionesFragment;
+import com.ies.bargas.fragments.PartesFragment;
 
-class PagerAdapter extends FragmentStatePagerAdapter {
+public class PagerAdapterParts extends FragmentStatePagerAdapter {
     private int numberOfTabs;
-    public PagerAdapter(FragmentManager fm, int numberOfTabs) {
+    public PagerAdapterParts(FragmentManager fm, int numberOfTabs) {
         super(fm);
         this.numberOfTabs = numberOfTabs;
     }
@@ -20,11 +20,11 @@ class PagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new Partes();
+                return new PartesFragment();
             case 1:
-                return new Expulsiones();
+                return new ExpulsionesFragment();
             case 2:
-                return new Alumnos();
+                return new AlumnosFragment();
             default:
                 return null;
         }

@@ -134,8 +134,9 @@ public class UserProfileActivity extends AppCompatActivity {
         // establecer el nombre del usuario en el header
         View headerView = navigationView.getHeaderView(0);
         TextView navUsername = headerView.findViewById(R.id.nav_username);
-        navUsername.setText("Nombre de usuario");
-
+        //se auto-rellenan el email y contraseña en caso de haberse guardado
+        prefs = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+        setCredentialsIfExist(navUsername);
         // Dependiendo del rol del usuario
         String userRole = Util.getUserRolPrefs(prefs);  // Reemplaza esto con el rol del usuario
         if (userRole.equals("1") ||userRole.equals("0")) {
@@ -392,5 +393,12 @@ public class UserProfileActivity extends AppCompatActivity {
 
 
     }
+    private void setCredentialsIfExist(TextView navUsername) {
+        String nombre = Util.getUserNombrePrefs(prefs);
+        String apellidos = Util.getUserApellidosPrefs(prefs);
+        if (!nombre.isEmpty() && !apellidos.isEmpty()){
+            navUsername.setText(nombre+ " "+apellidos);
 
+        }
+    }
 }

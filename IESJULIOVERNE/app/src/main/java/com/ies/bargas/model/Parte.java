@@ -1,30 +1,31 @@
 package com.ies.bargas.model;
 
 import java.sql.Time;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Parte {
     private int cod_parte;
     private int cod_usuario;
     private String matriculaAlumno;
     private int incidencia;
-    private int puntos;
-    private String materia;
-    private Date fecha;
-    private Time hora;
+    private int materia;
+    private LocalDate fecha;
+    private String hora;
     private String descripcion;
-    private Date fechaComunicacion;
+    private LocalDate fechaComunicacion;
     private String viaComunicacion;
     private String tipoParte;
-    private boolean caducado;
+    private int caducado;
 
 
-    public Parte(int cod_parte, int cod_usuario, String matriculaAlumno, int incidencia, int puntos, String materia, Date fecha, Time hora, String descripcion, Date fechaComunicacion, String viaComunicacion, String tipoParte, boolean caducado) {
+    public Parte(int cod_parte, int cod_usuario, String matriculaAlumno,
+                 int incidencia, int materia, LocalDate fecha,
+                 String hora, String descripcion, LocalDate fechaComunicacion,
+                 String viaComunicacion, String tipoParte, int caducado) {
         this.cod_parte = cod_parte;
         this.cod_usuario = cod_usuario;
         this.matriculaAlumno = matriculaAlumno;
         this.incidencia = incidencia;
-        this.puntos = puntos;
         this.materia = materia;
         this.fecha = fecha;
         this.hora = hora;
@@ -35,11 +36,12 @@ public class Parte {
         this.caducado = caducado;
     }
 
-    public Parte(int cod_usuario, String matriculaAlumno, int incidencia, int puntos, String materia, Date fecha, Time hora, String descripcion, Date fechaComunicacion, String viaComunicacion, String tipoParte, boolean caducado) {
+    public Parte(int cod_usuario, String matriculaAlumno, int incidencia,
+                 int materia, LocalDate fecha, String hora, String descripcion, LocalDate fechaComunicacion,
+                 String viaComunicacion, String tipoParte, int caducado) {
         this.cod_usuario = cod_usuario;
         this.matriculaAlumno = matriculaAlumno;
         this.incidencia = incidencia;
-        this.puntos = puntos;
         this.materia = materia;
         this.fecha = fecha;
         this.hora = hora;
@@ -85,35 +87,27 @@ public class Parte {
         this.incidencia = incidencia;
     }
 
-    public int getPuntos() {
-        return puntos;
-    }
-
-    public void setPuntos(int puntos) {
-        this.puntos = puntos;
-    }
-
-    public String getMateria() {
+    public int getMateria() {
         return materia;
     }
 
-    public void setMateria(String materia) {
+    public void setMateria(int materia) {
         this.materia = materia;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
-    public Time getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(Time hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 
@@ -125,11 +119,11 @@ public class Parte {
         this.descripcion = descripcion;
     }
 
-    public Date getFechaComunicacion() {
+    public LocalDate getFechaComunicacion() {
         return fechaComunicacion;
     }
 
-    public void setFechaComunicacion(Date fechaComunicacion) {
+    public void setFechaComunicacion(LocalDate fechaComunicacion) {
         this.fechaComunicacion = fechaComunicacion;
     }
 
@@ -149,11 +143,11 @@ public class Parte {
         this.tipoParte = tipoParte;
     }
 
-    public boolean isCaducado() {
+    public int isCaducado() {
         return caducado;
     }
 
-    public void setCaducado(boolean caducado) {
+    public void setCaducado(int caducado) {
         this.caducado = caducado;
     }
 
@@ -164,7 +158,6 @@ public class Parte {
                 ", cod_usuario=" + cod_usuario +
                 ", matriculaAlumno='" + matriculaAlumno + '\'' +
                 ", incidencia='" + incidencia + '\'' +
-                ", puntos=" + puntos +
                 ", materia='" + materia + '\'' +
                 ", fecha=" + fecha +
                 ", hora=" + hora +

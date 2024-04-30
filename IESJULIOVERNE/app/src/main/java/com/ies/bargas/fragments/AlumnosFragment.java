@@ -1,4 +1,4 @@
-package com.ies.bargas.Fragment;
+package com.ies.bargas.fragments;
 
 import android.os.Bundle;
 
@@ -12,10 +12,9 @@ import com.ies.bargas.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Alumnos#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Alumnos extends Fragment {
+public class AlumnosFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +25,7 @@ public class Alumnos extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Alumnos() {
+    public AlumnosFragment() {
         // Required empty public constructor
     }
 
@@ -39,8 +38,8 @@ public class Alumnos extends Fragment {
      * @return A new instance of fragment Alumnos.
      */
     // TODO: Rename and change types and number of parameters
-    public static Alumnos newInstance(String param1, String param2) {
-        Alumnos fragment = new Alumnos();
+    public static AlumnosFragment newInstance(String param1, String param2) {
+        AlumnosFragment fragment = new AlumnosFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

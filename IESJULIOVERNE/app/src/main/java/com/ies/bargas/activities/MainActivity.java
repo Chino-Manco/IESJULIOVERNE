@@ -123,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
         // establecer el nombre del usuario en el header
         View headerView = navigationView.getHeaderView(0);
         TextView navUsername = headerView.findViewById(R.id.nav_username);
-        LoginActivity loginActivity = new LoginActivity();
 
         //se auto-rellenan el email y contraseña en caso de haberse guardado
         prefs = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
