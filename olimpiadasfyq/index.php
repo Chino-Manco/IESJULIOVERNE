@@ -111,6 +111,9 @@
     <article class="contenedorimagen">
     <img src="img/fyq.jpg" alt="MiniOlimpiadas de Física y Química">
     </article>
+    <article class="contenedorimagen">
+    <img src="img/cartel.jpg" alt="MiniOlimpiadas de Física y Química">
+    </article>
     </main>
     <footer>
         <p>© 2024 MiniOlimpiadas de Física y Química - APFyQ-CLM. Todos los derechos reservados.</p>

@@ -11,8 +11,6 @@ Usuarios.nombre AS nombre, Usuarios.apellidos AS apellidos, Usuarios.cod_delphos
             JOIN Usuarios ON Guardias.cod_usuario = Usuarios.cod_usuario
             ORDER BY fecha DESC, periodoinicio DESC;";
 $resul = $db->query($select);
-
-$resul = $db->query($select);
 $i=0;
 // Utilizamos un bucle while para recorrer todas las filas que devuelve la consulta
 while ($columna = $resul->fetch(PDO::FETCH_ASSOC)) {

@@ -4,30 +4,61 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <!-- añade una toolbar-->
-        <!-- añade una toolbar-->
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <!-- Contenido principal y Toolbar -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                android:title="GUARDÍAS"
+                android:minHeight="?attr/actionBarSize"/>
+            <!-- FrameLayout para los fragments -->
+            <FrameLayout
+                android:id="@+id/fragment_container_shift"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
-    </LinearLayout>
-    <!-- añade un navigationView para configurar el menu del nav_drawer_menu.xml-->
+        </LinearLayout>
+
+        <!-- BottomNavigationView para los tabs en la parte inferior -->
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation_shifts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:menu="@menu/menu_guardias" />
+
+        <!-- FloatingActionButton encima de BottomNavigationView -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAddShiftActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_marginBottom="70dp"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/agregar"
+            app:layout_anchor="@id/bottom_navigation_shifts"
+            app:layout_anchorGravity="end|bottom|right"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <!-- NavigationView para el menú lateral -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:fitsSystemWindows="true"
         app:headerLayout="@layout/header_nav_drawer"
         app:menu="@menu/nav_options" />
 

@@ -28,7 +28,7 @@
     </header>
     <main class="p-4">
         <div class=" m-2">
-            <h2 class="text-light rounded bg-dark p-2 px-3">Partes de la Base de Datos</h2>
+        <h2 class="text-light rounded bg-dark p-2 px-3">Tabla de Expulsiones</h2>
             <div class="row">
                 <div class="col-lg-2 col-md-6 my-2">
                     <input type="date" id="filtroFecha" class="form-control" placeholder="Filtrar por fecha">
@@ -94,14 +94,13 @@
                             $query = "WHERE u.cod_usuario = $id_usuario";
                         }
 
-                        $consulta = $db->prepare("SELECT p.cod_parte, CONCAT(u.nombre, ' ', u.apellidos) AS nombreProfesorCompleto, p.fecha, i.puntos, CONCAT(a.nombre, ' ', a.apellidos) AS nombreAlumnoCompleto, p.materia, p.descripcion, a.grupo
-                        FROM Incidencias i
-                        JOIN Partes p ON i.cod_incidencia = p.incidencia
-                        JOIN Usuarios u ON p.cod_usuario = u.cod_usuario
-                        JOIN alumnos a ON p.matricula_Alumno = a.matricula
-                        $query
-                        ORDER BY p.fecha DESC
-                    ");
+                        $consulta = $db->prepare("SELECT CONCAT(u.nombre, ' ', u.apellidos) AS nombreProfesorCompleto, p.fecha, p.puntos, CONCAT(a.nombre, ' ', a.apellidos) AS nombreAlumnoCompleto, a.grupo
+                                FROM partes p
+                                JOIN usuarios u ON p.cod_usuario = u.cod_usuario
+                                JOIN alumnos a ON p.matricula_Alumno = a.matricula
+                                $query
+                                ORDER BY p.fecha DESC
+                            ");
 
                         $consulta->execute();
 

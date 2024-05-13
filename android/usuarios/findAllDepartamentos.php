@@ -13,7 +13,7 @@ try {
     $departamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // Preparar el response
-    $response = $departamentos;
+    $response =$departamentos;
 
     // encabezado en json
     header('Content-Type: application/json');

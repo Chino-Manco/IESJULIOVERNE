@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_usuario"
+        android:icon="@drawable/perfil_icono"
+        android:title="Usuario" />
+    <item
+        android:id="@+id/navigation_sala_profesores"
+        android:icon="@drawable/sala_profesores"
+        android:title="Sala_profesores" />
+    <item
+        android:id="@+id/navigation_semana"
+        android:icon="@drawable/semana"
+        android:title="Semana" />
+    <item
+        android:id="@+id/navigation_total"
+        android:icon="@drawable/total"
+        android:title="Total" />
+</menu>

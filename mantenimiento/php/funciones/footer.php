@@ -36,7 +36,7 @@
     </div>
   </footer>
   <script src="../js/bootstrap.bundle.min.js"></script>
-  <script src="../js/paginacionFiltro.js"></script>
+  <script src="../js/paginacion.js"></script>
   </body>
 
   </html>

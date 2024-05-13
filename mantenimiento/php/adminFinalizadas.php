@@ -44,10 +44,13 @@ controlarrol(0);
             require_once('funciones/eliminarIncidenciaFinalizada.php');
             ?>
           </div>
-          <div class="d-flex justify-content-center mt-5" id="tablaPaginacion">
+          <div class="d-flex justify-content-between mt-5" id="tablaPaginacion">
+           
+            <a href="crearInci.php" class="btn float" type="button" style="background-color: rgba(0, 0, 0, 0.2);">Crear Incidencia</a>
             <nav>
-              <ul class="pagination mr-2 " id="paginacion"></ul>
+              <ul class="pagination mr-2" id="paginacion"></ul>
             </nav>
+            <a href="funciones/pdf.php" type="button" class="btn float" style="background-color: rgba(0, 0, 0, 0.2);">Formato PDF</button></a>
           </div>
         </div>
       </div>

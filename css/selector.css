@@ -30,7 +30,14 @@
       height:65px;
       margin-top: 5px;
     }
-
+    h1 a{
+      text-decoration: none;
+      color: white;
+    }
+    h1 a:hover{
+      text-decoration: none;
+      color: white;
+    }
     .contenedor {
       margin: 0 auto;
       display: flex;

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_partes"
+        android:icon="@drawable/sala_profesores"
+        android:title="Partes" />
+    <item
+        android:id="@+id/navigation_expulsiones"
+        android:icon="@drawable/semana"
+        android:title="Expulsiones" />
+    <item
+        android:id="@+id/navigation_alumnos"
+        android:icon="@drawable/perfil_icono"
+        android:title="Alumnos" />
+</menu>

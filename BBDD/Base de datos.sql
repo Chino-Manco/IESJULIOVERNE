@@ -1,6 +1,7 @@
 DROP DATABASE IF EXISTS Proyectodaw;
 CREATE DATABASE Proyectodaw;
 USE Proyectodaw;
+
 -- tabla departamento
 CREATE TABLE Departamentos (
 codigo SMALLINT PRIMARY KEY AUTO_INCREMENT,
@@ -184,55 +185,56 @@ CREATE TABLE Reservas(
 
 CREATE TABLE Cursos (
   grupo varchar(20) NOT NULL PRIMARY KEY,
-  aula varchar(20)
+  aula varchar(20),
+  curso VARCHAR(30) NOT NULL
 );
 
-INSERT INTO Cursos (grupo, aula) VALUES
-('B1A', NULL),
-('B1B', NULL),
-('B1C', NULL),
-('B1D', NULL),
-('B2A', NULL),
-('B2B', NULL),
-('B2C', NULL),
-('CFGB1', NULL),
-('CFGB2', NULL),
-('DAM1', NULL),
-('DAM2', NULL),
-('DAW1', NULL),
-('DAW2', NULL),
-('DIV3A', NULL),
-('DIV3B', NULL),
-('DIV4E', NULL),
-('DIV4F', NULL),
-('E1A', NULL),
-('E1B', NULL),
-('E1C', NULL),
-('E1D', NULL),
-('E1E', NULL),
-('E1F', NULL),
-('E2A', NULL),
-('E2B', NULL),
-('E2C', NULL),
-('E2D', NULL),
-('E2E', NULL),
-('E2F', NULL),
-('E2G', NULL),
-('E3A', NULL),
-('E3B', NULL),
-('E3C', NULL),
-('E3D', NULL),
-('E3E', NULL),
-('E4A', NULL),
-('E4B', NULL),
-('E4C', NULL),
-('E4D', NULL),
-('E4E', NULL),
-('E4F', NULL),
-('PEFP1', NULL),
-('PEFP2', NULL),
-('SMR1', NULL),
-('SMR2', NULL);
+INSERT INTO Cursos (grupo, aula, curso) VALUES
+('B1A', NULL, '1BTOCIENCIAS'),
+('B1B', NULL, '1BTOCIENCIAS'),
+('B1C', NULL, '1BTOHUMCSO'),
+('B1D', NULL, '1BTOHUMCSO'),
+('B2A', NULL, '2BTOCIENCIAS'),
+('B2B', NULL, '1BTOHUMCSO'),
+('B2C', NULL, '1BTOHUMCSO'),
+('CFGB1', NULL, 'CFGB1'),
+('CFGB2', NULL, 'CFGB1'),
+('DAM1', NULL, 'DAM1'),
+('DAM2', NULL, 'DAM2'),
+('DAW1', NULL, 'DAW1'),
+('DAW2', NULL, 'DAW2'),
+('DIV3A', NULL, '3ESO'),
+('DIV3B', NULL, '3ESO'),
+('DIV4E', NULL, '4ESO'),
+('DIV4F', NULL, '4ESO'),
+('E1A', NULL, '1ESO'),
+('E1B', NULL, '1ESO'),
+('E1C', NULL, '1ESO'),
+('E1D', NULL, '1ESO'),
+('E1E', NULL, '1ESO'),
+('E1F', NULL, '1ESO'),
+('E2A', NULL, '2ESO'),
+('E2B', NULL, '2ESO'),
+('E2C', NULL, '2ESO'),
+('E2D', NULL, '2ESO'),
+('E2E', NULL, '2ESO'),
+('E2F', NULL, '2ESO'),
+('E2G', NULL, '2ESO'),
+('E3A', NULL, '3ESO'),
+('E3B', NULL, '3ESO'),
+('E3C', NULL, '3ESO'),
+('E3D', NULL, '3ESO'),
+('E3E', NULL, '3ESO'),
+('E4A', NULL, '4ESO'),
+('E4B', NULL, '4ESO'),
+('E4C', NULL, '4ESO'),
+('E4D', NULL, '4ESO'),
+('E4E', NULL, '4ESO'),
+('E4F', NULL, '4ESO'),
+('PEFP1', NULL, 'PEFP1'),
+('PEFP2', NULL, 'PEFP2'),
+('SMR1', NULL, 'SMR1'),
+('SMR2', NULL, 'SMR2');
 
 
 CREATE TABLE Alumnos (
@@ -439,6 +441,7 @@ CREATE TABLE Expulsiones (
   matricula_del_Alumno varchar(20) NOT NULL,
   fecha_Inicio date DEFAULT NULL,
   Fecha_Fin date DEFAULT NULL,
+  tipo_expulsion  varchar(40),
   fecha_Insercion timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (cod_expulsion),
   FOREIGN KEY (cod_usuario) REFERENCES usuarios(cod_usuario),
@@ -1354,8 +1357,6 @@ INSERT INTO Alumnos (matricula, nombre, apellidos, grupo) VALUES
 ('2018/2727', 'Rubén', 'Rodríguez Tomé', 'SMR2'),
 ('2020/3085', 'Juan Francisco', 'Ruano Pérez', 'SMR2'),
 ('2022/934', 'David', 'Ruiz Chozas', 'SMR2');
-
-
 
 
 

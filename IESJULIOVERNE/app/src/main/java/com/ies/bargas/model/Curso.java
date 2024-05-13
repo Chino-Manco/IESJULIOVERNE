@@ -6,10 +6,12 @@ import java.util.List;
 public class Curso {
     private String grupo;
     private String aula;
+    private String curso;
 
-    public Curso(String grupo, String aula) {
+    public Curso(String grupo, String aula, String curso) {
         this.grupo = grupo;
         this.aula = aula;
+        this.curso= curso;
     }
 
     public Curso(String grupo) {
@@ -35,11 +37,20 @@ public class Curso {
         this.aula = aula;
     }
 
+    public String getCurso() {
+        return curso;
+    }
+
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
+
     @Override
     public String toString() {
         return "Curso{" +
                 "grupo='" + grupo + '\'' +
                 ", aula='" + aula + '\'' +
+                ", curso='" + curso + '\'' +
                 '}';
     }
     public static String [] toStringNombre(List<Curso> cursos) {

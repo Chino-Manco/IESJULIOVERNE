@@ -1,0 +1,42 @@
+
+<!-- fragment_floating.xml --><LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Agrega tus elementos de interfaz de usuario aquí -->
+    <TextView
+        android:id="@+id/mensajeFlotante"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Contenido de la pantalla flotante"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/botonExpulsion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Expulsión a casa"
+            android:layout_margin="10dp"/>
+
+        <Button
+            android:id="@+id/botonTrabajo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Trabajo social educativo"
+            android:layout_margin="10dp"/>
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

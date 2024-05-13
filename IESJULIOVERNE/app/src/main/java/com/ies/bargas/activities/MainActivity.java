@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -20,6 +19,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ies.bargas.R;
+import com.ies.bargas.activities.parts.PartsActivity;
+import com.ies.bargas.activities.shifts.ShiftsActivity;
 import com.ies.bargas.adapters.MyAdapter;
 import com.ies.bargas.model.Item;
 import com.google.android.material.navigation.NavigationView;

@@ -3,7 +3,7 @@ include '../conexion.php';
 
 try {
     // Preparo la consulta 
-    $sql = "SELECT grupo FROM Cursos";
+    $sql = "SELECT grupo, curso FROM Cursos";
     $stmt = $db->prepare($sql);
 
     // Ejecuto la consulta 

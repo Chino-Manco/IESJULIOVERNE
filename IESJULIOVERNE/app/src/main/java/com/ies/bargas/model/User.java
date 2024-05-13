@@ -1,5 +1,7 @@
 package com.ies.bargas.model;
 
+import java.util.List;
+
 public class User {
     private int cod_usuario;
     private String email;
@@ -146,5 +148,13 @@ public class User {
                 ", tutor_grupo='" + tutor_grupo + '\'' +
                 ", rol='" + rol + '\'' +
                 '}';
+    }
+
+    public static String[] toStringNombre(List<User> usuarios) {
+        String [] lista = new String[usuarios.size()];
+        for(int i=0;i<usuarios.size();i++){
+            lista [i] = usuarios.get(i).getNombre()+ " - " +usuarios.get(i).getApellidos();
+        }
+        return lista;
     }
 }

@@ -1,4 +1,4 @@
-package com.ies.bargas.activities;
+package com.ies.bargas.activities.parts;
 
 import android.content.Context;
 import android.content.Intent;
@@ -33,10 +33,13 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.navigation.NavigationView;
 import com.ies.bargas.R;
+import com.ies.bargas.activities.LoginActivity;
+import com.ies.bargas.activities.MainActivity;
+import com.ies.bargas.activities.shifts.ShiftsActivity;
+import com.ies.bargas.activities.UserProfileActivity;
 import com.ies.bargas.controllers.WebService;
 import com.ies.bargas.model.Alumno;
 import com.ies.bargas.model.Asignatura;
-import com.ies.bargas.model.Departamento;
 import com.ies.bargas.model.Incidencia;
 import com.ies.bargas.model.Parte;
 import com.ies.bargas.util.Util;
@@ -49,7 +52,6 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 public class AddPartsActivity extends AppCompatActivity {
@@ -72,10 +74,10 @@ public class AddPartsActivity extends AppCompatActivity {
     private Button volver;
     private TextView error;
     private List<Alumno> globalAlumnos;
-    private String globalMatricula;
+    private Alumno globalAlumno;
     private Incidencia globalIncidencia;
     private List<Asignatura> globalAsignaturas;
-    private Asignatura globalAsignatura;
+    private Asignatura globalAsignatura = new Asignatura();
 
     private LocalDate globalFechaComunicacion=LocalDate.now();
     private NavigationView navigationView;
@@ -163,9 +165,14 @@ public class AddPartsActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 // Obtiene el valor seleccionado del Spinner
-                String grupo = (String) parentView.getItemAtPosition(position);
+                String palabras=(String) parentView.getItemAtPosition(position);
+
+                String[] conjunto=palabras.split(" - ");
+
+                String grupo = conjunto[0];
+                String clase = conjunto[1];
                 findAlumnos(grupo);
-                findAsignaturas(grupo);
+                findAsignaturas(clase);
 
             }
 
@@ -191,7 +198,7 @@ public class AddPartsActivity extends AppCompatActivity {
         spinnerAlumno.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                globalMatricula=globalAlumnos.get(position).getMatricula();
+                globalAlumno=globalAlumnos.get(position);
             }
 
             @Override
@@ -319,7 +326,12 @@ public class AddPartsActivity extends AppCompatActivity {
                             jsonObject = response.getJSONObject(i);
 
                             String grupo = jsonObject.getString("grupo");
-                            opciones[i] = grupo;
+                            String curso="";
+                            if(!jsonObject.getString("curso").equals("null")){
+                                curso = jsonObject.getString("curso");
+                            }
+                            opciones[i] = grupo+" - "+curso;
+
                         }
 
                         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(AddPartsActivity.this,
@@ -440,12 +452,13 @@ public class AddPartsActivity extends AppCompatActivity {
 
     private void AddParts(){
 
-        if (descripcion.getText().toString().isEmpty() || !radioGroup.isSelected()){
+        if (descripcion.getText().toString().isEmpty() || (!radioNotificacion.isChecked() && !radioLlamada.isChecked()
+        && !radioMensaje.isChecked() && !radioEntrevista.isChecked())){
             error.setText("anade una descripcion y un metodo de comunicacion");
         } else {
             prefs = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
-            int cod_usuario= Integer.parseInt(Util.getUserCodUsuarioPrefs(prefs));
-            String matricula= globalMatricula;
+            int cod_usuario= Util.getUserCodUsuarioPrefs(prefs);
+            String matricula= globalAlumno.getMatricula();
             int incidencia = globalIncidencia.getCodigo();
             int materia = globalAsignatura.getCodAsignatura();
             LocalDate fecha = LocalDate.now();
@@ -469,30 +482,45 @@ public class AddPartsActivity extends AppCompatActivity {
                 viaComunicacion=radioNotificacion.getText().toString();
 
 
-
-            descripcion.setText(horaFormateada);
-            Parte newParte = new Parte(cod_usuario,matricula, incidencia, materia, fecha, horaFormateada, descripc, fechaComunicacion, viaComunicacion, "puntos", 2);
+            Parte newParte = new Parte(cod_usuario,matricula, incidencia, materia, fecha, horaFormateada, descripc, fechaComunicacion, viaComunicacion, "puntos", 0);
 
 
             RequestQueue queue = Volley.newRequestQueue(this);
-            String url = WebService.RAIZ + WebService.InsertParts + "?"
-                    + "cod_usuario=" + newParte.getCod_usuario()
-                    + "&matricula_Alumno=" + newParte.getMatriculaAlumno()
-                    + "&incidencia=" + newParte.getIncidencia()
-                    + "&materia=" + newParte.getMateria()
-                    + "&fecha=" + newParte.getFecha()
-                    + "&hora=" + newParte.getHora()
-                    + "&descripcion=" + newParte.getDescripcion()
-                    + "&fecha_Comunicacion=" + newParte.getFechaComunicacion()
-                    + "&via_Comunicacion=" + newParte.getViaComunicacion()
-                    + "&tipo_Parte=" + newParte.getTipoParte()
-                    + "&caducado=" + newParte.isCaducado();
+            String url;
+
+            if (materia==0){
+                url= WebService.RAIZ + WebService.InsertParts + "?"
+                        + "cod_usuario=" + newParte.getCod_usuario()
+                        + "&matricula_Alumno=" + newParte.getMatriculaAlumno()
+                        + "&incidencia=" + newParte.getIncidencia()
+                        + "&fecha=" + newParte.getFecha()
+                        + "&hora=" + newParte.getHora()
+                        + "&descripcion=" + newParte.getDescripcion()
+                        + "&fecha_Comunicacion=" + newParte.getFechaComunicacion()
+                        + "&via_Comunicacion=" + newParte.getViaComunicacion()
+                        + "&tipo_Parte=" + newParte.getTipoParte()
+                        + "&caducado=" + newParte.isCaducado();
+            } else {
+                url = WebService.RAIZ + WebService.InsertParts + "?"
+                        + "cod_usuario=" + newParte.getCod_usuario()
+                        + "&matricula_Alumno=" + newParte.getMatriculaAlumno()
+                        + "&incidencia=" + newParte.getIncidencia()
+                        + "&materia=" + newParte.getMateria()
+                        + "&fecha=" + newParte.getFecha()
+                        + "&hora=" + newParte.getHora()
+                        + "&descripcion=" + newParte.getDescripcion()
+                        + "&fecha_Comunicacion=" + newParte.getFechaComunicacion()
+                        + "&via_Comunicacion=" + newParte.getViaComunicacion()
+                        + "&tipo_Parte=" + newParte.getTipoParte()
+                        + "&caducado=" + newParte.isCaducado();
+            }
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
                             Toast.makeText(AddPartsActivity.this, "El parte ha sido añadido", Toast.LENGTH_SHORT).show();
+                            comprobarExpulsion(newParte.getMatriculaAlumno(), newParte.getCod_usuario());
                         }
                     },
                     new Response.ErrorListener() {
@@ -505,6 +533,7 @@ public class AddPartsActivity extends AppCompatActivity {
 
         }
 
+
     }
     private void setCredentialsIfExist(TextView navUsername) {
         String nombre = Util.getUserNombrePrefs(prefs);
@@ -513,5 +542,56 @@ public class AddPartsActivity extends AppCompatActivity {
             navUsername.setText(nombre+ " "+apellidos);
 
         }
+    }
+
+    private void comprobarExpulsion(String matriculaAlumno, int cod_usuario){
+
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = WebService.RAIZ + WebService.SelectPartes + "?" +
+                "matricula=" + matriculaAlumno;
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                JSONObject jsonObject = null;
+                try {
+
+                    int puntos=0;
+
+                    if(response.length()>0) {
+                        for (int i = 0; i < response.length(); i++) {
+
+                            jsonObject = response.getJSONObject(i);
+
+                            int punto = jsonObject.getInt("puntos");
+                            puntos += punto;
+                        }
+                    }
+
+                    Toast.makeText(getApplicationContext(), globalAlumno.getNombre()+" tiene "+ puntos +" puntos", Toast.LENGTH_SHORT).show();
+
+                    if (puntos>9) {
+                        FloatingFragment floatingFragment = FloatingFragment.newInstance(globalAlumno, cod_usuario);
+                        floatingFragment.show(getSupportFragmentManager(), "floatingFragment");
+                    } else{
+                        Intent intent = new Intent(AddPartsActivity.this, PartsActivity.class);
+                        startActivity(intent);
+                    }
+
+                } catch (JSONException e) {
+                    Toast.makeText(getApplicationContext(), "ERROR: No se encontro ningún parte", Toast.LENGTH_LONG).show();
+                }
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(AddPartsActivity.this, "ERROR: " + error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+        queue.add(jsonArrayRequest);
+
     }
 }

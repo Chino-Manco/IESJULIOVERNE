@@ -66,4 +66,9 @@ public class Alumno {
                 ", grupo='" + grupo + '\'' +
                 '}';
     }
+
+    public String toString2() {
+        return String.format("%-20s%30s", matricula +" - "+ grupo, nombre +" - "+ apellidos );
+    }
+
 }
