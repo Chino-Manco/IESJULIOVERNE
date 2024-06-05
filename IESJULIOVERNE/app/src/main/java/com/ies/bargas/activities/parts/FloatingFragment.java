@@ -93,7 +93,7 @@ public class FloatingFragment extends DialogFragment {
     private void addExpulsion(String tipo){
         //se auto-rellenan el email y contraseña en caso de haberse guardado
         int cod_usuario= globalCod_usuario;
-        String matricula= globalAlumno.getMatricula();
+        Alumno matricula= globalAlumno;
         Timestamp timestamp= new Timestamp((new Date()).getTime());
 
         Expulsion expulsion = new Expulsion(cod_usuario, matricula, tipo, timestamp);
@@ -101,7 +101,7 @@ public class FloatingFragment extends DialogFragment {
         RequestQueue queue = Volley.newRequestQueue(getContext());
         String url = WebService.RAIZ + WebService.InsertExpulsiones + "?"
                 + "cod_usuario=" + expulsion.getCod_usuario()
-                + "&matricula_del_Alumno=" + expulsion.getMatricula_del_Alumno()
+                + "&matricula_del_Alumno=" + expulsion.getMatricula_del_Alumno().getMatricula()
                 + "&tipo_expulsion=" + expulsion.getTipo_expulsion()
                 + "&fecha_Insercion=" + expulsion.getFecha_Insercion();
 

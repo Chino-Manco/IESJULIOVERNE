@@ -41,10 +41,16 @@
             android:name=".activities.parts.AddPartsActivity"
             android:exported="true" />
         <activity
+            android:name=".activities.parts.ModifyPartActivity"
+            android:exported="true" />
+        <activity
             android:name=".activities.parts.AddAlumnosActivity"
             android:exported="true" />
         <activity
             android:name=".activities.parts.ModifyAlumnoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.parts.ModifyExpulsionActivity"
             android:exported="true" />
         <activity
             android:name=".activities.parts.PartsActivity"

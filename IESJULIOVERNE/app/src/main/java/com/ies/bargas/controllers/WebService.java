@@ -23,6 +23,16 @@ public class WebService {
     public static final String SelectAlumnos="partes/selectAlumnos.php";
     public static final String ModificarAlumno="partes/modifyAlumno.php";
     public static final String DeleteAlumno="partes/deleteAlumno.php";
+    public static final String findAllParts="partes/findAllPartes.php";
+    public static final String findAlumno="partes/findAlumno.php";
+    public static final String modifyPart="partes/modifyParte.php";
+    public static final String deleteParte="partes/deleteParte.php";
+    public static final String caducarParte="partes/caducarParte.php";
+    public static final String comprobarExpulsion="partes/findExpulsionByAlumno.php";
+    public static final String findAllExpulsiones="partes/findAllExpulsiones.php";
+    public static final String findAllPartesByAlumno="partes/findAllPartesByAlumno.php";
+    public static final String usarPartes="partes/usarPartes.php";
+    public static final String modifyExpulsion="partes/modifyExpulsion.php";
 
 
 

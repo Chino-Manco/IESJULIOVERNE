@@ -6,8 +6,8 @@ import java.time.LocalDate;
 public class Parte {
     private int cod_parte;
     private int cod_usuario;
-    private String matriculaAlumno;
-    private int incidencia;
+    private Alumno matriculaAlumno;
+    private Incidencia incidencia;
     private int materia;
     private LocalDate fecha;
     private String hora;
@@ -18,8 +18,8 @@ public class Parte {
     private int caducado;
 
 
-    public Parte(int cod_parte, int cod_usuario, String matriculaAlumno,
-                 int incidencia, int materia, LocalDate fecha,
+    public Parte(int cod_parte, int cod_usuario, Alumno matriculaAlumno,
+                 Incidencia incidencia, int materia, LocalDate fecha,
                  String hora, String descripcion, LocalDate fechaComunicacion,
                  String viaComunicacion, String tipoParte, int caducado) {
         this.cod_parte = cod_parte;
@@ -36,7 +36,7 @@ public class Parte {
         this.caducado = caducado;
     }
 
-    public Parte(int cod_usuario, String matriculaAlumno, int incidencia,
+    public Parte(int cod_usuario, Alumno matriculaAlumno, Incidencia incidencia,
                  int materia, LocalDate fecha, String hora, String descripcion, LocalDate fechaComunicacion,
                  String viaComunicacion, String tipoParte, int caducado) {
         this.cod_usuario = cod_usuario;
@@ -71,19 +71,19 @@ public class Parte {
         this.cod_usuario = cod_usuario;
     }
 
-    public String getMatriculaAlumno() {
+    public Alumno getMatriculaAlumno() {
         return matriculaAlumno;
     }
 
-    public void setMatriculaAlumno(String matriculaAlumno) {
+    public void setMatriculaAlumno(Alumno matriculaAlumno) {
         this.matriculaAlumno = matriculaAlumno;
     }
 
-    public int getIncidencia() {
+    public Incidencia getIncidencia() {
         return incidencia;
     }
 
-    public void setIncidencia(int incidencia) {
+    public void setIncidencia(Incidencia incidencia) {
         this.incidencia = incidencia;
     }
 

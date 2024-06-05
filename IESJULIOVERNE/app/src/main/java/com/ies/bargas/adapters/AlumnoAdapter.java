@@ -43,13 +43,19 @@ public class AlumnoAdapter extends ArrayAdapter<Alumno> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View listItemView = convertView;
         if (listItemView == null) {
-            listItemView = LayoutInflater.from(context).inflate(android.R.layout.simple_list_item_1, parent, false);
+            listItemView = LayoutInflater.from(context).inflate(R.layout.alumno_list, parent, false);
         }
 
         Alumno currentAlumno = alumnos.get(position);
 
-        TextView nombreTextView = listItemView.findViewById(android.R.id.text1);
-        nombreTextView.setText(currentAlumno.toString2());
+        TextView matricula = listItemView.findViewById(R.id.matricula);
+        TextView nombre = listItemView.findViewById(R.id.nombre);
+        TextView apellidos = listItemView.findViewById(R.id.apellidos);
+        TextView grupo = listItemView.findViewById(R.id.grupo);
+        matricula.setText(currentAlumno.getMatricula());
+        nombre.setText(currentAlumno.getNombre());
+        apellidos.setText(currentAlumno.getApellidos());
+        grupo.setText(currentAlumno.getGrupo());
 
         listItemView.setOnClickListener(new View.OnClickListener() {
             @Override

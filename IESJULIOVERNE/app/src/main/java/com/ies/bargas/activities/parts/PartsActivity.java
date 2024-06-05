@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -15,23 +16,16 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.tabs.TabLayout;
 import com.ies.bargas.R;
 import com.ies.bargas.activities.LoginActivity;
 import com.ies.bargas.activities.MainActivity;
 import com.ies.bargas.activities.shifts.ShiftsActivity;
 import com.ies.bargas.activities.UserProfileActivity;
-import com.ies.bargas.adapters.PagerAdapterParts;
 import com.ies.bargas.fragments.AlumnosFragment;
 import com.ies.bargas.fragments.ExpulsionesFragment;
-import com.ies.bargas.fragments.GuardiasSalaProfesoresFragment;
-import com.ies.bargas.fragments.GuardiasSemanaFragment;
-import com.ies.bargas.fragments.GuardiasTotalFragment;
-import com.ies.bargas.fragments.GuardiasUsuarioFragment;
 import com.ies.bargas.fragments.PartesFragment;
 import com.ies.bargas.util.Util;
 
@@ -41,7 +35,7 @@ public class PartsActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private SharedPreferences prefs;
     private BottomNavigationView bottomNavigationView;
-
+    private String rol;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +54,7 @@ public class PartsActivity extends AppCompatActivity {
         //shared preferences
 
         prefs = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+        rol= Util.getUserRolPrefs(prefs);
         // configurar la vista de la navegacion
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -108,6 +103,7 @@ public class PartsActivity extends AppCompatActivity {
         // Configura el BottomNavigationView
         bottomNavigationView = findViewById(R.id.bottom_navigation_parts);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment selectedFragment = null;
@@ -129,12 +125,31 @@ public class PartsActivity extends AppCompatActivity {
             }
         });
 
+
         // Establece el fragment inicial
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_part, new PartesFragment()).commit();
             bottomNavigationView.setSelectedItemId(R.id.navigation_partes);
         }
+
+
+        // Obtener referencia al menú del BottomNavigationView y deshabilitar elementos
+        Menu bottomMenu = bottomNavigationView.getMenu();
+        MenuItem partesItem = bottomMenu.findItem(R.id.navigation_partes);
+        MenuItem expulsionesItem = bottomMenu.findItem(R.id.navigation_expulsiones);
+        MenuItem alumnosItem = bottomMenu.findItem(R.id.navigation_alumnos);
+
+        // Desactivar ítems según sea necesario
+        if (!rol.equals("0")){
+            expulsionesItem.setEnabled(false);
+            expulsionesItem.setVisible(false);
+            alumnosItem.setEnabled(false);
+            alumnosItem.setVisible(false);
+        }
+
+
     }
+
 
 
 

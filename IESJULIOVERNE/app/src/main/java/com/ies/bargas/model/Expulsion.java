@@ -6,22 +6,31 @@ import java.time.LocalDate;
 public class Expulsion {
     private int cod_expulsion;
     private int cod_usuario;
-    private String matricula_del_Alumno;
+    private Alumno matricula_del_Alumno;
     private LocalDate fecha_Inicio;
     private LocalDate Fecha_Fin;
     private String tipo_expulsion;
     private Timestamp fecha_Insercion;
 
-    public Expulsion(int cod_expulsion, int cod_usuario, String matricula_del_Alumno, LocalDate fecha_Inicio, LocalDate fecha_Fin, Timestamp fecha_Insercion) {
+    public Expulsion(int cod_expulsion, int cod_usuario, Alumno matricula_del_Alumno, LocalDate fecha_Inicio, LocalDate fecha_Fin, String tipo_expulsion, Timestamp fecha_Insercion) {
         this.cod_expulsion = cod_expulsion;
         this.cod_usuario = cod_usuario;
         this.matricula_del_Alumno = matricula_del_Alumno;
         this.fecha_Inicio = fecha_Inicio;
-        Fecha_Fin = fecha_Fin;
+        this.Fecha_Fin = fecha_Fin;
+        this.tipo_expulsion= tipo_expulsion;
         this.fecha_Insercion = fecha_Insercion;
     }
 
-    public Expulsion(int cod_usuario, String matricula_del_Alumno, LocalDate fecha_Inicio, LocalDate fecha_Fin, Timestamp fecha_Insercion) {
+    public Expulsion(int cod_expulsion, int cod_usuario, Alumno matricula_del_Alumno, String tipo_expulsion, Timestamp fecha_Insercion) {
+        this.cod_expulsion = cod_expulsion;
+        this.cod_usuario = cod_usuario;
+        this.matricula_del_Alumno = matricula_del_Alumno;
+        this.tipo_expulsion= tipo_expulsion;
+        this.fecha_Insercion = fecha_Insercion;
+    }
+
+    public Expulsion(int cod_usuario, Alumno matricula_del_Alumno, LocalDate fecha_Inicio, LocalDate fecha_Fin, Timestamp fecha_Insercion) {
         this.cod_usuario = cod_usuario;
         this.matricula_del_Alumno = matricula_del_Alumno;
         this.fecha_Inicio = fecha_Inicio;
@@ -29,7 +38,7 @@ public class Expulsion {
         this.fecha_Insercion = fecha_Insercion;
     }
 
-    public Expulsion(int cod_usuario, String matricula_del_Alumno,String tipo_expulsion, Timestamp fecha_Insercion) {
+    public Expulsion(int cod_usuario, Alumno matricula_del_Alumno,String tipo_expulsion, Timestamp fecha_Insercion) {
         this.cod_usuario = cod_usuario;
         this.matricula_del_Alumno = matricula_del_Alumno;
         this.tipo_expulsion=tipo_expulsion;
@@ -55,11 +64,11 @@ public class Expulsion {
         this.cod_usuario = cod_usuario;
     }
 
-    public String getMatricula_del_Alumno() {
+    public Alumno getMatricula_del_Alumno() {
         return matricula_del_Alumno;
     }
 
-    public void setMatricula_del_Alumno(String matricula_del_Alumno) {
+    public void setMatricula_del_Alumno(Alumno matricula_del_Alumno) {
         this.matricula_del_Alumno = matricula_del_Alumno;
     }
 
